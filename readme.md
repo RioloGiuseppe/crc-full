@@ -5,7 +5,7 @@
 ---
 
 # Description
-The crc-full module is used to calculate any kind of CRC setting parameters such as length, polynomial and others. It's totally written in typescript for node js.
+The crc-full module is used to calculate any kind of CRC setting parameters such as length, polynomial and others. It's completely written in typescript for node js.
 
 ## How to use
 
@@ -33,15 +33,15 @@ For typescript use:
 import {CRC} from 'crc-full'
 ...
 var crc =  new CRC(16,"CRC16",0x8005,0x0000,0x0000,false, false);
-crc.compute([0x48 ,0x65,0x6c ,0x6c ,0x6f ,0x20 ,0x77 ,0x6f ,0x72 0x6c ,0x64 ,0x21]);
-crc.compute(Buffer.from("Hello world!","ascii"))
+crc.compute([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
+var computed_crc = crc.compute(Buffer.from("Hello world!","ascii"))
 ```
 For javascript use:
 ```js
 const CRC = require('crc-full').CRC;
-var crc = new CRC(16,"CRC16",0x8005,0x0000,0x0000,false, false);
-crc.compute([0x48 ,0x65,0x6c ,0x6c ,0x6f ,0x20 ,0x77 ,0x6f ,0x72 ,0x6c ,0x64 ,0x21]);
-crc.compute(Buffer.from("Hello world!","ascii"));
+var crc = new CRC(16, "CRC16", 0x8005, 0x0000, 0x0000, false, false);
+crc.compute([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
+var computed_crc = crc.compute(Buffer.from("Hello world!", "ascii"))
 ```
 
 Where the parameters in the constructor are:
@@ -55,7 +55,7 @@ Where the parameters in the constructor are:
 
 ### Presets
 
-Invoking the static getter *defaults* is possible to use the internal preconfigurated CRC algorithms. An array of instantiated object will return back
+Invoking the static getter *defaults* is possible to use the internal preconfigurated CRC algorithms. An array of instantiated object is returned back
 
 The algorithms are:
 
