@@ -9,7 +9,7 @@ The crc-full module is used to calculate any kind of CRC setting parameters such
 
 ## How to use
 
-Use is very simple. just import the form inside the project. node js.
+Use is very simple. Just add the module to project.
 
 > **Install dependencies:**  
 > The only one dependency is typescript compiler
@@ -110,7 +110,7 @@ The algorithms are:
 
 ### Advanced
 
-The module support also advanced methods to calculate CRC tables and exports them as byte arrays:
+The module also support advanced methods to calculate CRC tables and export them as byte arrays:
 
 ```js
 ...
