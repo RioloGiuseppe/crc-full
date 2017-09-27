@@ -1,3 +1,4 @@
+import {} from '@types/node'
 import CrcUtil from './crcUtil';
 
 export class CRC {
@@ -169,7 +170,7 @@ export class CRC {
         }
     }
 
-    public compute(bytes : number[]) {
+    public compute(bytes : number[]|Buffer) {
         if (!this._crcTable) 
             this.makeCrcTable();
         var crc = this._initialVal;
