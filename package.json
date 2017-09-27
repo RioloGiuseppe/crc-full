@@ -1,0 +1,34 @@
+{
+    "name": "crc-full",
+    "version": "0.9.0",
+    "description": "CRC generator for node js",
+    "main": "build/crc.js",
+    "scripts": {
+        "prepublish": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "crc",
+        "crc8",
+        "crc16",
+        "crc32",
+        "polynomial"
+    ],
+    "author": {
+        "name": "Giuseppe Riolo",
+        "email": "riolo.giuseppe@gmail.com"
+    },
+    "license": "MIT",
+    "types": "./build/crcModels.d.ts",
+    "dev-dependencies": {
+        "typescript": "^2.5.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RioloGiuseppe/crc-full.git"
+    },
+    "bugs": {
+        "url": "https://github.com/RioloGiuseppe/crc-full/issues"
+    },
+    "homepage": "https://github.com/RioloGiuseppe/crc-full#readme"
+}

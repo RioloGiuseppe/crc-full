@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "sourceMap": true,
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "outDir": "./build",
+        /* Raise error on expressions and declarations with an implied 'any' type. */
+        // "strictNullChecks": true,              /* Enable strict null checks. */
+        "noImplicitThis": true
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}
