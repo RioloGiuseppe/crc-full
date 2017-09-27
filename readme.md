@@ -1,4 +1,4 @@
-# rf24js
+# crc-full
 
 ![Support Node of LTS](https://img.shields.io/badge/node-LTS-brightgreen.svg?style=plastic) ![npm version](https://img.shields.io/badge/npm-3.5.0-brightgreen.svg?style=plastic) ![Build passing](https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic) ![dependencies typescript](https://img.shields.io/badge/dependencies-typescript-blue.svg?style=plastic) ![License mit](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic) 
 
