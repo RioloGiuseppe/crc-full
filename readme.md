@@ -45,7 +45,7 @@ var computed_crc = crc.compute(Buffer.from("Hello world!", "ascii"))
 ```
 
 Where the parameters in the constructor are:
-- Lenght: the lenght of CRC in bit (8,16,32)
+- Length: the Length of CRC in bit (8,16,32)
 - Name: friendly name for the configuration
 - Polinomial: the polinomial used to compute CRC
 - InitialValue: initial value of CRC
@@ -59,7 +59,7 @@ Invoking the static getter *defaults* is possible to use the internal preconfigu
 
 The algorithms are:
 
-| Lenght | Name | Polinomial | Initial value | Final value | Input reflected | Output reflected |
+| Length | Name | Polinomial | Initial value | Final value | Input reflected | Output reflected |
 |:------:|------|:----------:|:-------------:|:-----------:|:---------------:|:----------------:|
 |8|CRC8|0x07|0x00|0x00|false|false)|
 |8|CRC8_SAE_J1850|0x1D|0xFF|0xFF|false|false)|
