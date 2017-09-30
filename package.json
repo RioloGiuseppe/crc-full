@@ -1,6 +1,6 @@
 {
     "name": "crc-full",
-    "version": "0.9.5",
+    "version": "1.0.0",
     "description": "CRC generator for node js",
     "main": "dist/crc.js",
     "scripts": {

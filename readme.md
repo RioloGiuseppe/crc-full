@@ -32,14 +32,14 @@ For typescript use:
 ```ts
 import {CRC} from 'crc-full'
 ...
-var crc =  new CRC(16,"CRC16",0x8005,0x0000,0x0000,false, false);
+let crc =  new CRC("CRC16", 16, 0x8005, 0x0000, 0x0000, false, false);
 crc.compute([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
-var computed_crc = crc.compute(Buffer.from("Hello world!","ascii"))
+let computed_crc = crc.compute(Buffer.from("Hello world!","ascii"))
 ```
 For javascript use:
 ```js
 const CRC = require('crc-full').CRC;
-var crc = new CRC(16, "CRC16", 0x8005, 0x0000, 0x0000, false, false);
+var crc = new CRC("CRC16", 16, 0x8005, 0x0000, 0x0000, false, false);
 crc.compute([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
 var computed_crc = crc.compute(Buffer.from("Hello world!", "ascii"))
 ```
@@ -108,6 +108,23 @@ The algorithms are:
 |32|CRC32_JAMCRC|0x04C11DB7|0xFFFFFFFF|0x00000000|true|true|
 |32|CRC32_XFER|0x000000AF|0x00000000|0x00000000|false|false|
 
+Is possible to use one of above CRC preset using the method default(name) where parameter _name_ is the name of chosen preset.
+
+Typescript users can use:
+
+```ts
+import {CRC} from 'crc-full'
+let crc = CRC.default("CRC16_CCIT_ZERO");
+let computed_crc = crc.compute(Buffer.from("Hello world!","ascii"))
+```
+Typescript users can use:
+
+```ts
+const CRC = require('crc-full').CRC;
+var crc = CRC.default("CRC16_CCIT_ZERO");
+var computed_crc = crc.compute(Buffer.from("Hello world!","ascii"))
+```
+
 ### Advanced
 
 The module also support advanced methods to calculate CRC tables and export them as byte arrays:
@@ -119,3 +136,9 @@ crc.makeCrcTableReversed();
 var table = crc.table;
 ...
 ```
+
+### Notes
+
+The method `compute` take a byte array (or Buffer) as input and returns a number.  
+If you need to convert a string you have to pass it as a byte array.  
+If you need to read the CRC result in hex format string use `.toString(16)`
