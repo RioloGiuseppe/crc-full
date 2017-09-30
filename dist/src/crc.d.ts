@@ -1,0 +1,27 @@
+/// <reference types="node" />
+export default class CRC {
+    private _width;
+    private _name;
+    private _polynomial;
+    private _initialVal;
+    private _finalXorVal;
+    private _inputReflected;
+    private _resultReflected;
+    private static _list;
+    private _crcTable;
+    private _castMask;
+    private _msbMask;
+    width: number;
+    name: string;
+    polynomial: number;
+    initial: number;
+    finalXor: number;
+    inputReflected: boolean;
+    resultReflected: boolean;
+    constructor(width: number, name: string, polynomial: number, initial: number, finalXor: number, inputReflected: boolean, resultReflected: boolean);
+    static readonly defaults: CRC[];
+    makeCrcTable(): void;
+    makeCrcTableReversed(): void;
+    compute(bytes: number[] | Buffer): number;
+    readonly table: number[];
+}
