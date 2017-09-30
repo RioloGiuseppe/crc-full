@@ -1,10 +1,10 @@
 {
     "name": "crc-full",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "description": "CRC generator for node js",
-    "main": "build/crc.js",
+    "main": "dist/crc.js",
     "scripts": {
-        "postinstall": "tsc",
+        "prepublish": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -28,7 +28,7 @@
         "url": "https://github.com/RioloGiuseppe"
     },
     "license": "MIT",
-    "typings": "./build/crc.d.ts",
+    "typings": "./dist/crc.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/RioloGiuseppe/crc-full.git"
@@ -39,7 +39,6 @@
     "homepage": "https://github.com/RioloGiuseppe/crc-full#readme",
     "readme": "https://github.com/RioloGiuseppe/crc-full#readme",
     "devDependencies": {
-        "@types/node": "^8.0.31",
-        "typescript": "^2.5.3"
+        "@types/node": "^8.0.31"
     }
 }

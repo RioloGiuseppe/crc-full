@@ -7,7 +7,7 @@
         "removeComments": true,
         "strict": true,
         "noImplicitAny": true,
-        "outDir": "./build",
+        "outDir": "./dist",
         "noImplicitThis": true
     },
     "include": [
