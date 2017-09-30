@@ -18,10 +18,11 @@ export declare class CRC {
     finalXor: number;
     inputReflected: boolean;
     resultReflected: boolean;
-    constructor(width: number, name: string, polynomial: number, initial: number, finalXor: number, inputReflected: boolean, resultReflected: boolean);
+    constructor(name: string, width: number, polynomial: number, initial: number, finalXor: number, inputReflected: boolean, resultReflected: boolean);
     static readonly defaults: CRC[];
     makeCrcTable(): void;
     makeCrcTableReversed(): void;
     compute(bytes: number[] | Buffer): number;
     readonly table: number[];
+    static default(name: string): CRC | undefined;
 }
