@@ -1,6 +1,6 @@
 {
     "name": "crc-full",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "CRC generator for node js",
     "main": "dist/crc.js",
     "scripts": {
@@ -20,7 +20,7 @@
     "displayName": "crc-full",
     "maintainers": [{
         "name": "Giuseppe Riolo",
-        "email": "Giuseppe Riolo"
+        "email": "riolo.giuseppe@gmail.com"
     }],
     "author": {
         "name": "Giuseppe Riolo",

@@ -191,6 +191,25 @@ var CRC = (function () {
         }
         return ((crc ^ this._finalXorVal) & this._castMask);
     };
+    CRC.prototype.computeBuffer = function (bytes) {
+        var val = this.compute(bytes);
+        if (this.width === 8) {
+            return Buffer.from([val]);
+        }
+        else if (this.width === 16) {
+            var b = Buffer.alloc(2);
+            b.writeUInt16BE(val, 0);
+            return b;
+        }
+        else if (this.width === 32) {
+            var b = Buffer.alloc(4);
+            b.writeUInt32BE(val, 0);
+            return b;
+        }
+        else {
+            throw new Error("Unsupported length");
+        }
+    };
     Object.defineProperty(CRC.prototype, "table", {
         get: function () {
             return this._crcTable;

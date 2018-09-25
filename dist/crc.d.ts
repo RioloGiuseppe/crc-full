@@ -23,6 +23,7 @@ export declare class CRC {
     makeCrcTable(): void;
     makeCrcTableReversed(): void;
     compute(bytes: number[] | Buffer): number;
+    computeBuffer(bytes: number[] | Buffer): Buffer;
     readonly table: number[];
     static default(name: string): CRC | undefined;
 }

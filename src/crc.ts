@@ -1,23 +1,22 @@
-import {} from '@types/node'
 import CrcUtil from './crcUtil';
 
 export class CRC {
 
-    private _width : number;
-    private _name : string;
-    private _polynomial : number;
-    private _initialVal : number;
-    private _finalXorVal : number;
-    private _inputReflected : boolean;
-    private _resultReflected : boolean;
-    private static _list : CRC[];
+    private _width: number;
+    private _name: string;
+    private _polynomial: number;
+    private _initialVal: number;
+    private _finalXorVal: number;
+    private _inputReflected: boolean;
+    private _resultReflected: boolean;
+    private static _list: CRC[];
 
-    private _crcTable : number[];
-    private _castMask : number;
-    private _msbMask : number
+    private _crcTable: number[];
+    private _castMask: number;
+    private _msbMask: number
 
-    public get width() : number {return this._width;}
-    public set width(v : number) {
+    public get width(): number { return this._width; }
+    public set width(v: number) {
         this._width = v;
         switch (v) {
             case 8:
@@ -35,37 +34,37 @@ export class CRC {
         this._msbMask = 0x01 << (v - 1)
     }
 
-    public get name() : string {return this._name;}
-    public set name(v : string) {
+    public get name(): string { return this._name; }
+    public set name(v: string) {
         this._name = v;
     }
 
-    public get polynomial() : number {return this._polynomial;}
-    public set polynomial(v : number) {
+    public get polynomial(): number { return this._polynomial; }
+    public set polynomial(v: number) {
         this._polynomial = v;
     }
 
-    public get initial() : number {return this._initialVal;}
-    public set initial(v : number) {
+    public get initial(): number { return this._initialVal; }
+    public set initial(v: number) {
         this._initialVal = v;
     }
 
-    public get finalXor() : number {return this._finalXorVal;}
-    public set finalXor(v : number) {
+    public get finalXor(): number { return this._finalXorVal; }
+    public set finalXor(v: number) {
         this._finalXorVal = v;
     }
 
-    public get inputReflected() : boolean {return this._inputReflected;}
-    public set inputReflected(v : boolean) {
+    public get inputReflected(): boolean { return this._inputReflected; }
+    public set inputReflected(v: boolean) {
         this._inputReflected = v;
     }
 
-    public get resultReflected() : boolean {return this._resultReflected;}
-    public set resultReflected(v : boolean) {
+    public get resultReflected(): boolean { return this._resultReflected; }
+    public set resultReflected(v: boolean) {
         this._resultReflected = v;
     }
 
-    constructor(name : string, width : number, polynomial : number, initial : number, finalXor : number, inputReflected : boolean, resultReflected : boolean) {
+    constructor(name: string, width: number, polynomial: number, initial: number, finalXor: number, inputReflected: boolean, resultReflected: boolean) {
         this.width = width;
         this.name = name;
         this.polynomial = polynomial;
@@ -75,7 +74,7 @@ export class CRC {
         this.resultReflected = resultReflected;
     }
 
-    public static get defaults() : CRC[] {
+    public static get defaults(): CRC[] {
         if (!this._list) {
             this._list = [
                 new CRC("CRC8", 8, 0x07, 0x00, 0x00, false, false),
@@ -169,8 +168,8 @@ export class CRC {
         }
     }
 
-    public compute(bytes : number[] | Buffer) {
-        if (!this._crcTable) 
+    public compute(bytes: number[] | Buffer) {
+        if (!this._crcTable)
             this.makeCrcTable();
         var crc = this._initialVal;
         for (var i = 0; i < bytes.length; i++) {
@@ -197,13 +196,30 @@ export class CRC {
         return ((crc ^ this._finalXorVal) & this._castMask);
     }
 
+    public computeBuffer(bytes: number[] | Buffer) {
+        let val = this.compute(bytes);
+        if (this.width === 8) {
+            return Buffer.from([val])
+        } else if (this.width === 16) {
+            let b = Buffer.alloc(2);
+            b.writeUInt16BE(val, 0);
+            return b;
+        } else if (this.width === 32) {
+            let b = Buffer.alloc(4);
+            b.writeUInt32BE(val, 0);
+            return b;
+        } else {
+            throw new Error("Unsupported length");
+        }
+    }
+
     public get table() {
         return this._crcTable;
     }
 
-    public static default(name : string) : CRC | undefined {
+    public static default(name: string): CRC | undefined {
         return CRC
             .defaults
-            .find((o : CRC) : boolean => o.name === name);
+            .find((o: CRC): boolean => o.name === name);
     }
 }
